@@ -4,31 +4,57 @@ def action(resul):
 	spacetravel = Astronaut(launching='m')
 	if resul == 'l': 
 		spacetravel.Launching_on()
+		return 1
+	elif resul == 'a':
+		spacetravel.Launching_off()
+		return 1
+	elif resul == 'f':
+		spacetravel.Flag()
+		return 1
+	elif resul == 'd':
+		spacetravel.Alien_die()
+		return 1
+	elif resul == 'p':
+		spacetravel.Die_not_die()
+		return 1
 	else:
-		print("what up bro")
+		return 0
+
+
 
 def menu(sms):
-
-	while True:
+	ctrl = 0
+	while ctrl == 0:
 		menu =  str(input(sms))
-		action(menu)
+		ctrl = action(menu)
 		if menu == 'e':
-			print("exittt maann")
+			print("\nthanks you and good morning!")
+			quit()
 
 
 
 def run ():
 
-	
+
 	sms='''
-         welcome a this travel
-         press  [l] for start launching
+Welcome a this travel!
 
-		'''
+press  [l] for start launching
+press  [e] for finishing program\n\n\r---> '''
 	menu(sms)
-
-
-
+	sms= '''
+press  [a] for down
+press  [e] for finishing program\n\n\r---> '''
+	menu(sms)
+	sms='''
+press  [f] for flag
+press  [e] for finishing program\n\n\r---> '''
+	menu(sms)
+	sms='''
+press  [d] for  alien die
+press  [p] for peace with alien
+press  [e] for finishing program\n\n\r---> '''
+	menu(sms)
 
 
 
