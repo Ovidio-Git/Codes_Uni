@@ -5,9 +5,9 @@
 
 
 typedef struct{
-	char Dato; 			 // Dato a almacenar en la lista
-	struct Nodo *ptrnext; // Autoreferenciado de la estrucutra
-} Nodo;
+	char data; 			 // Dato a almacenar en la lista
+	struct listNode *ptrnext; // Autoreferenciado de la estrucutra
+} listNode;
 
 
 
