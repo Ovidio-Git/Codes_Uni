@@ -13,8 +13,10 @@ def run():
 	a = int(input('Angulo 1 -> '))
 	b = int(input('Angulo 1 -> '))
 	c = int(input('Angulo 1 -> '))
-	triangle(a,b,c)
-
+	if (a+b+c) == 180 :
+		triangle(a,b,c)
+	else:
+		print('Error valor de angulo no permitido')
 
 if __name__ == '__main__':
 	run()
