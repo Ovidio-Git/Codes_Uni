@@ -38,11 +38,7 @@ int main(){
     printf("[DATA SEND]\r\n");
     recv(socket_id,buffer,9999,0);
     printf("[DATA READ]\r\n");
-    for (int i = 0; i < 10; i++)
-    {
-         printf("%s",buffer[i]);
-    }
-    
+  
     puts(buffer);
     close(socket_id);
 
