@@ -39,7 +39,8 @@ int main(){
     recv(socket_id,buffer,9999,0);
     printf("[DATA READ]\r\n");
   
-    puts(buffer);
+    
+    printf(buffer);
     close(socket_id);
 
     return (0);
