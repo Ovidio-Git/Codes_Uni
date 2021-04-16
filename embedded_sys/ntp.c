@@ -69,17 +69,18 @@ int main(){
     //    La función htonl() convierte el entero largo sin signo hostlong desde el  orden  de  bytes
     //    del host al de la red.
     
-    printf("second after- ntohl %ld \n\r", aux[5]);
+    // printf("summi %ld \n\r", aux[5]);
 
     aux[5] = aux[5] - Seventy_years; // le restamos los 70 años a la fecha 
     
   
-    //La función de biblioteca C char * ctime (const time_t * timer) devuelve una cadena que representa el tiempo local basado en el argumento timer.
+    //La función ctime (const time_t * timer) 
+    //devuelve una cadena que representa el tiempo basado en el argumento timer.
     //La cadena devuelta tiene el siguiente formato: 
-    //día de la semana, mes en letras, día del mes, hh: mm: ss la hora y el año.
+    //día de la semana, mes, día del mes, hh: mm: ss la hora y el año.
     
-    printf("======== FECHA =========\n\r %s", ctime(&aux[5]));
-
+    printf("======== FECHA =========\n\r%s", ctime(&aux[5]));
+    printf("========================\n\r");
     close(socket_id);
     return (0);
 
