@@ -24,7 +24,8 @@ int main(){
     
     int connection = 0;
     int socket_id = 0;
-    char msg[] ="Hello sir, message send scket instance\n\r";
+    char msg[] ="Hello server!\n\r";
+    char buffer[100]={0};
     socket_id = socket(PF_INET, SOCK_STREAM, 0);
 
     // Server parameters   AWS IP Public= 18.222.148.97
@@ -38,16 +39,30 @@ int main(){
     // Make connection
     connection = connect(socket_id, (struct sockaddr*)&serverc, sizeof(serverc));
     if (connection < 0){
-        printf("[ERROR] connection failed\r\n");
+        perror("[ERROR] connection failed");
         return(-1);
     }
     printf("[CONNECTION SUCCESS]\r\n");
-    send(socket_id, msg, sizeof(msg), 0); 
+
+
+    if (send(socket_id, msg, sizeof(msg), 0) < 0){
+        perror("[ERROR] Data send");
+        return(-1);
+    }
     printf("[DATA SEND]\r\n");
+    
+    
+    if(recv(socket_id, buffer, sizeof(buffer),0) <0 ){
+        perror("[ERROR] Data Reveice");
+        return(-1);
+    }
+    printf("[DATA RECEIVE]\r\n");
+    
+    
+    printf("%s", buffer);
+    
     close(socket_id);
-
     return (0);
-
 }
 
 
