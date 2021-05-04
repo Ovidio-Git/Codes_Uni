@@ -15,11 +15,11 @@ Steps for TCP server communication
 #include <sys/socket.h> //for socket(), connect(), and blind()
 #include <netinet/in.h>
 
-#define  MAXPENDING 2  // queue max connection permited 
+#define  MAXPENDING 2  // queue max connection permited
 
 
 int main(){
-    
+
     int socket_server = 0;
     int socket_client = 0;
     int addr_length = 0;
@@ -35,8 +35,8 @@ int main(){
         return(-1);
     }
     printf("[+] Socket\n\r");
-       
-    // Server parameters   
+
+    // Server parameters
     server_server.sin_family      = PF_INET ;  // protocol
     server_server.sin_addr.s_addr = INADDR_ANY; // server ip
     server_server.sin_port        = htons(19900); // connection port
@@ -51,7 +51,7 @@ int main(){
     }
     printf("[+] Bind\n\r");
 
-    // Listen funtion 
+    // Listen funtion
     Listen = listen(socket_server, MAXPENDING);
     if (Listen < 0){
         perror("[ERROR] Listen");
@@ -69,13 +69,13 @@ int main(){
 
     // print data
     while(recv(socket_client, buffer, sizeof(buffer),0) > 0){
-        printf("%s\n\r", buffer); 
+        printf("%s\n\r", buffer);
     }
     printf("Finish Program\n\r");
 
     // closed sockets
     close(socket_server);
     close(socket_client);
-    return(0); 
+    return(0);
 }
 
