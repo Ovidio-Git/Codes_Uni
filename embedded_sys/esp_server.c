@@ -9,7 +9,7 @@
 
 int main(){
 
-    int port = 19902;
+    int port = 19903;
     // server variables
     int socket_server = 0;
     int socket_client = 0;
@@ -83,10 +83,13 @@ int main(){
                 printf("\n\rNAME:%s",password);
                 aux = login(username, password);
                 printf("\n\rlogin value -> %d <-", aux);
-            }
-            //send dashboard.html
-            else if (strncmp("GET /test", buffer, 9) == 0){
-                render("./dashboard.html", socket_client);
+                //send dashboard.html
+                if (aux == 1){
+                    render("./dashboard.html", socket_client);
+                }
+                else{
+                    render("./index.html", socket_client);
+                }
             }
             printf("==============\n\r%s\n\r==============\n\r",buffer);
 
