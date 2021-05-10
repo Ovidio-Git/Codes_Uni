@@ -3,40 +3,9 @@
 #include <sys/socket.h> // for socket(), connect(), and blind()
 #include <string.h>     // for strncmp()
 #include <netinet/in.h>
+#include "toolbox.h"    // for render(), search()
 
 #define  MAXPENDING 2  //  queue max connection permited
-
-
-int render(char file[], int socket){
-
-    // Website templates files
-    char *ptrContent = NULL;
-    long filesize = 0;
-    FILE* ptrfile = NULL;
-
-    // Open file
-    ptrfile = fopen(file, "r");
-    if (ptrfile == NULL){
-        printf("[ERROR] File not found\n\r");
-        return (-1);
-    }
-    printf("[+] File found\n\r");
-
-    //  File size
-    fseek(ptrfile, 0L, SEEK_END); // go end file
-    filesize = ftell(ptrfile);
-    fseek(ptrfile, 0L, SEEK_SET); // go start file
-    printf("File size [%ld] bytes\n\r", filesize); // print file size
-
-    ptrContent = (char*) malloc(filesize);    // reserving memory
-    fread(ptrContent, 1, filesize, ptrfile);  // reading file content
-    send(socket, ptrContent, filesize, 0);  // sending website file
-    for(int i=0; i<100000000; i++); // delay for testing
-    close(socket); // close client socket
-    free(ptrContent);   // freeing memory
-    fclose(ptrfile);    // close file
-}
-
 
 int main(){
 
@@ -96,7 +65,8 @@ int main(){
                 render("./index.html", socket_client);
             }
             else if (strncmp("POST", buffer, 4) == 0){
-                printf("------- QUE JUER PERRO ------------");
+                // search(buffer, "Username=");
+                // search(buffer, "Password=");
             }
             else if (strncmp("GET /test", buffer, 9) == 0){
                 render("./dashboard.html", socket_client);

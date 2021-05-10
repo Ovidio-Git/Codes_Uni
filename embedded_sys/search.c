@@ -10,7 +10,7 @@ void search(char chain[], char target[]){
     char find[10];
 
 
-    while (chain[n] != '\0'){
+    while (1){
         if (chain[n]==target[m]){
             while(chain[n] == target[m]){
                 n++;
@@ -24,13 +24,17 @@ void search(char chain[], char target[]){
                     break;
                 }
             }
-            m=0;
+            if(m==len){
+                break;
+            }
         }
         n++;
     }
+    printf("==>");
     for (int i =0; i <= 8; i++){
         printf("%c", find[i]);
     }
+    printf("<==");
 }
 
 
@@ -38,5 +42,4 @@ int main(){
     char b[]="Accept-Language: en-US,en;q=0.9  Username=er32 Password=89re ccep� ";
     char t[]="Username=";
     search(b, t);
-    printf("7");
 }
