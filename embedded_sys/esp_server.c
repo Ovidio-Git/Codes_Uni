@@ -9,7 +9,7 @@
 
 int main(){
 
-    int port = 19903;
+    int port = 19904;
     // server variables
     int socket_server = 0;
     int socket_client = 0;
